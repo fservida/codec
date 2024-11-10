@@ -1,5 +1,36 @@
 <img src="codec white on black logo cropped center.png" alt="SITU Research and Codec logos">
 
+# Custom CODEC version for offline files
+## Installation
+Install node, then run:
+```
+https://github.com/fservida/codec
+cd codec
+npm i
+touch .env
+``` 
+
+edit .env to match the following, with your API key:
+MAPBOX_ACCESS_TOKEN="pk.etc..........................."
+
+## Running
+```
+git clone https://github.com/fservida/codec_flask
+```
+Create codec_template.xlsx (You can download Situ's example from Google Docs in xlsx format)
+Set all parameters as needed.
+Fill all events and media as needed, codec_flask includes a helper to traverse a folder and output an excel sheet with metadata about media in subfolders, ready to copy in codec_template.xlsx.
+
+Set the main folder in which your media resides in app.py.
+Ensure all URLs in codec_template.xlsx are correct.
+
+Run with
+```
+python app.py
+```
+
+# Original README Below
+
 Codec is a collaborative tool for managing video evidence. A public demo site is available [here](https://codec-demo.netlify.app/)
 
 A response to the deluge of visual information flowing out of conflict environments and contested events, Codec is designed to support the work of researchers, journalists, legal teams, activist groups and others in adjacent fields. While the tool has many potential applications, the driving goal has been to further investigations, amplify truth, and pursue accountability for human rights abuses. The interface is a modular system split into three components: a timeline, a map, and a media player that allows users to securely synthesize large data sets of multimedia assets across the time and space of an event or series of events.
