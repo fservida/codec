@@ -37,13 +37,13 @@
 
   function fetch_google_sheet_data() {
     return fetch(
-      `/.netlify/functions/googlesheets?sheet=platformconfig&offset=1`,
+      `http://localhost:5000/googlesheets?sheet=platformconfig&offset=1`,
     )
       .then((rows_string) => rows_string.json())
       .then((platform_config) => {
         $platform_config_store = platform_config;
         fetch(
-          `/.netlify/functions/googlesheets?sheet=` +
+          `http://localhost:5000/googlesheets?sheet=` +
             platform_config["Title of tab with media assets"] +
             `&offset=` +
             platform_config["Rank of assets row with column names"],
@@ -54,7 +54,7 @@
           });
 
         fetch(
-          `/.netlify/functions/googlesheets?sheet=` +
+          `http://localhost:5000/googlesheets?sheet=` +
             platform_config["Title of tab with events"] +
             `&offset=` +
             platform_config["Rank of events row with column names"],

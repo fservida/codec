@@ -68,6 +68,7 @@
       {#each Object.values($media_store_filtered).filter((video) => !isNaN(video.lat) && !isNaN(video.long)) as medium}
         <span>
           <Marker lat={medium.lat} lng={medium.long} popup={false}>
+            <!-- svelte-ignore a11y-mouse-events-have-key-events -->
             <div
               on:click={onMarkerClick}
               on:mouseover={onMarkerOver}
