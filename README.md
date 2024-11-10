@@ -27,6 +27,7 @@ Ensure all URLs in codec_template.xlsx are correct.
 Run with
 ```
 python app.py
+npx netlify dev
 ```
 
 # Original README Below
