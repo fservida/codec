@@ -1,9 +1,10 @@
 <script>
-  import { local_file_store, platform_config_store } from "../../stores/store";
+  import { local_file_store, platform_config_store, media_store_filtered } from "../../stores/store";
   export let medium;
 
   let src;
   let used_filepath;
+  let media_lat, media_long, geolocation;
   if ($platform_config_store["Source of media files"].includes("local")) {
     try {
       used_filepath = $local_file_store[medium.UAR].name;
@@ -16,8 +17,19 @@
       medium[$platform_config_store["Title of column used for url"]];
     src = used_filepath;
   }
+  media_lat = $media_store_filtered[medium.UAR].lat
+  media_long = $media_store_filtered[medium.UAR].long
+  if (media_lat & media_long){
+    geolocation = "Coordinates: " + media_lat + ", " + media_long
+  }
+  else{
+    geolocation = "This item has no geolocation available."
+  }
 </script>
-{ src }
+<div style="font-size:.75em; padding-left:1em;">
+  { src }<br/>
+  { geolocation }
+</div>
 {#if src !== null}
   {#if used_filepath.toLowerCase().includes("mp4") || used_filepath
       .toLowerCase()
